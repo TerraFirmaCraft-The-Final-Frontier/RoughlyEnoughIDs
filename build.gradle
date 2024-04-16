@@ -134,6 +134,7 @@ dependencies {
     compileOnly rfg.deobf( "curse.maven:GeographiCraft-76544:2497541" )
     compileOnly rfg.deobf( "curse.maven:mystcraft-224599:2958490" )
     compileOnly rfg.deobf( "curse.maven:HammerCore-247401:3366814" )
+    compileOnly rfg.deobf( "curse.maven:phosphor-forge-318255:2747710" )
     // Advanced Rocketry 1.7.0
     compileOnly rfg.deobf( "curse.maven:AdvancedRocketry-236542:3015079" )
     // Advanced Rocketry 2.0.0
