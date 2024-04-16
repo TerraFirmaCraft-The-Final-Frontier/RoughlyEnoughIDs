@@ -19,7 +19,7 @@ public abstract class MixinChunk$Sponge {
     @Shadow
     @Final
     private World world;
-
+    @Final
     @Shadow
     public int x;
     @Final

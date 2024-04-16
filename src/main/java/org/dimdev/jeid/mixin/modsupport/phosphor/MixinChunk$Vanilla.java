@@ -18,7 +18,7 @@ public abstract class MixinChunk$Vanilla {
     @Shadow
     @Final
     private World world;
-
+    @Final
     @Shadow
     public int x;
     @Final
