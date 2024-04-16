@@ -34,9 +34,6 @@ public class JEIDMixinPlugin implements IMixinConfigPlugin {
 
     @Override
     public String getRefMapperConfig() {
-//        if (!Loader.isModLoaded("phosphor-lighting")){
-//            return  "mixins.jeid.refmap.json";
-//        }
         return  "mixins.jeid.refmap.json";
     }
 
