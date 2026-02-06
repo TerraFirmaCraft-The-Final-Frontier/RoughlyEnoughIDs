@@ -129,7 +129,7 @@ dependencies {
             transitive = false
         }
     }
-    compileOnly rfg.deobf("maven.modrinth:scapeandrunparasites:1.9.20")
+    compileOnly rfg.deobf("maven.modrinth:scapeandrunparasites:1.10.1")
     compileOnly rfg.deobf("maven.modrinth:wyrms:0.5.124")
     compileOnly rfg.deobf("curse.maven:biomes-o-plenty-220318:2842510")
     compileOnly rfg.deobf("curse.maven:twilightforest-227639:3051450")
