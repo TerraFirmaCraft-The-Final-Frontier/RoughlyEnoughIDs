@@ -28,10 +28,11 @@ public class MixinBlockSpreadBiome {
         Biome targetbiome = rules.getBoolean("srpForceHarlequin") ?
                 SRPBiomes.biomeHarlequin : SRPReference.getBiomeFromInt(type);
         Chunk chunk = worldIn.getChunk(pos);
-        chunk.markDirty();
         int inChunkX = pos.getX() & 15;
         int inChunkZ = pos.getZ() & 15;
         ((INewChunk) chunk).getIntBiomeArray()[inChunkZ << 4 | inChunkX] = Biome.getIdForBiome(targetbiome);
+        chunk.markDirty();
+        worldIn.markBlocksDirtyVertical(pos.getX(), pos.getZ(), 0, pos.getY());
         ci.cancel();
     }
 }

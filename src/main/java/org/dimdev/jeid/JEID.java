@@ -37,7 +37,7 @@ public class JEID {
         + "after:journeymap;"
         + "after:moreplanets;"
         + "after:mystcraft;"
-        + "after:srparasites@[1.10,);"
+        + "after:srparasites@[1.10.2,);"
         + "after:thaumcraft;"
         + "after:thebetweenlands;"
         + "after:tofucraft;"
