@@ -1,10 +1,10 @@
-package org.dimdev.jeid.api;
+package org.tff.reid.api;
 
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
 
-import org.dimdev.jeid.api.biome.BiomeAccessor;
+import org.tff.reid.api.biome.BiomeAccessor;
 
 /**
  * API class to provide utility methods to easily read & write extended biomes in RoughlyEnoughIDs format.

@@ -1,6 +1,6 @@
 package org.dimdev.jeid.mixin.modsupport.realisticterraingen;
 
-import org.dimdev.jeid.api.compat.CompatibleChunkGenerator;
+import org.tff.reid.api.compat.CompatibleChunkGenerator;
 import org.spongepowered.asm.mixin.Mixin;
 import rtg.world.gen.ChunkGeneratorRTG;
 

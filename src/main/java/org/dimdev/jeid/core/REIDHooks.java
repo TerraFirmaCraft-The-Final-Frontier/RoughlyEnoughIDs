@@ -6,8 +6,8 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.gen.IChunkGenerator;
 
-import org.dimdev.jeid.api.BiomeApi;
-import org.dimdev.jeid.api.compat.CompatibleChunkGenerator;
+import org.tff.reid.api.BiomeApi;
+import org.tff.reid.api.compat.CompatibleChunkGenerator;
 
 import javax.annotation.Nullable;
 

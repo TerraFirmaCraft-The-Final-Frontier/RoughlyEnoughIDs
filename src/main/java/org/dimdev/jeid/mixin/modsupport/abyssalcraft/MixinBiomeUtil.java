@@ -6,7 +6,7 @@ import net.minecraft.world.chunk.Chunk;
 
 import com.llamalad7.mixinextras.sugar.Local;
 import com.shinoow.abyssalcraft.common.util.BiomeUtil;
-import org.dimdev.jeid.api.BiomeApi;
+import org.tff.reid.api.BiomeApi;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

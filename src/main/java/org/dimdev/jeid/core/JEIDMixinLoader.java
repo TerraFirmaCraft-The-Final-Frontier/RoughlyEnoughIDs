@@ -5,8 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.StringJoiner;
 
-import org.dimdev.jeid.jeid.Tags;
 import org.dimdev.jeid.util.Mods;
+import org.tff.reid.Tags;
 import zone.rong.mixinbooter.ILateMixinLoader;
 
 public class JEIDMixinLoader implements ILateMixinLoader {

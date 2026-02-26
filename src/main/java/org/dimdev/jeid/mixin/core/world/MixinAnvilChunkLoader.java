@@ -8,7 +8,7 @@ import net.minecraft.world.chunk.NibbleArray;
 import net.minecraft.world.chunk.storage.AnvilChunkLoader;
 import net.minecraft.world.chunk.storage.ExtendedBlockStorage;
 import org.dimdev.jeid.JEID;
-import org.dimdev.jeid.api.BiomeApi;
+import org.tff.reid.api.BiomeApi;
 import org.dimdev.jeid.ducks.INewBlockStateContainer;
 import org.dimdev.jeid.ducks.INewChunk;
 import org.dimdev.jeid.impl.BiomeApiImpl;

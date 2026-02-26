@@ -5,7 +5,7 @@ import net.minecraft.world.World;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.vetpetmon.wyrmsofnyrus.common.world.biome.SpreadingBiome;
-import org.dimdev.jeid.api.BiomeApi;
+import org.tff.reid.api.BiomeApi;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 

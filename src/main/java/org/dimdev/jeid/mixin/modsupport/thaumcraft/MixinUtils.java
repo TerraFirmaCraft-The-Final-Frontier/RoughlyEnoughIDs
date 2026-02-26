@@ -8,7 +8,7 @@ import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
-import org.dimdev.jeid.api.BiomeApi;
+import org.tff.reid.api.BiomeApi;
 import org.dimdev.jeid.network.MessageManager;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

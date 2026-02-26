@@ -15,7 +15,7 @@ import io.github.opencubicchunks.cubicchunks.core.server.chunkio.IONbtReader;
 import io.github.opencubicchunks.cubicchunks.core.util.AddressTools;
 import io.github.opencubicchunks.cubicchunks.core.world.cube.Cube;
 import net.minecraftforge.common.util.Constants;
-import org.dimdev.jeid.api.BiomeApi;
+import org.tff.reid.api.BiomeApi;
 import org.dimdev.jeid.impl.type.BiomeStorage;
 import org.dimdev.jeid.ducks.INewBlockStateContainer;
 import org.dimdev.jeid.impl.type.BiomeContainer;

@@ -3,7 +3,7 @@ package org.dimdev.jeid.mixin.modsupport.advancedrocketry;
 import net.minecraft.world.chunk.Chunk;
 
 import io.netty.buffer.ByteBuf;
-import org.dimdev.jeid.api.BiomeApi;
+import org.tff.reid.api.BiomeApi;
 import org.dimdev.jeid.impl.type.BiomeContainer;
 import org.dimdev.jeid.impl.type.BiomeStorage;
 import org.spongepowered.asm.mixin.Mixin;

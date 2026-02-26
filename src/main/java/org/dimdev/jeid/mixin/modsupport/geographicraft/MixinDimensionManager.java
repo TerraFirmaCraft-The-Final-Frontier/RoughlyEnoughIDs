@@ -5,7 +5,7 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
 
 import climateControl.DimensionManager;
-import org.dimdev.jeid.api.BiomeApi;
+import org.tff.reid.api.BiomeApi;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

@@ -8,7 +8,7 @@ assertProperty("api_package")
 
 final String javaSourceDir = 'src/main/java/'
 
-final String modGroupPath = root_package.toString().replace('.' as char, '/' as char)
+final String modGroupPath = (publication_package.toString() + '.' + publication_id.toString()).replace('.' as char, '/' as char)
 final String apiPackagePath = api_package.toString().replace('.' as char, '/' as char)
 
 String targetPackageJava = javaSourceDir + modGroupPath

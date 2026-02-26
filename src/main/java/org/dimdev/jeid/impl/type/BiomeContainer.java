@@ -4,7 +4,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.chunk.Chunk;
 
 import com.google.common.base.Preconditions;
-import org.dimdev.jeid.api.biome.BiomeAccessor;
+import org.tff.reid.api.biome.BiomeAccessor;
 import org.dimdev.jeid.init.REIDBiomes;
 import org.dimdev.jeid.util.Lazy;
 

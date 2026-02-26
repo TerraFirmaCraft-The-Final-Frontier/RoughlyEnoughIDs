@@ -5,7 +5,7 @@ import net.minecraft.world.World;
 
 import com.dhanantry.scapeandrunparasites.util.ParasiteEventWorld;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
-import org.dimdev.jeid.api.BiomeApi;
+import org.tff.reid.api.BiomeApi;
 import org.dimdev.jeid.network.MessageManager;
 import org.spongepowered.asm.mixin.Dynamic;
 import org.spongepowered.asm.mixin.Mixin;

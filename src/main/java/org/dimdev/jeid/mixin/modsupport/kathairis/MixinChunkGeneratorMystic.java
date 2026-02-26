@@ -4,8 +4,8 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
 
 import mod.krevik.world.dimension.ChunkGeneratorMystic;
-import org.dimdev.jeid.api.BiomeApi;
-import org.dimdev.jeid.api.compat.CompatibleChunkGenerator;
+import org.tff.reid.api.BiomeApi;
+import org.tff.reid.api.compat.CompatibleChunkGenerator;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;

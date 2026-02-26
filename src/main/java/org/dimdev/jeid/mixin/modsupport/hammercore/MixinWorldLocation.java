@@ -9,7 +9,7 @@ import com.zeitheron.hammercore.net.HCNet;
 import com.zeitheron.hammercore.net.IPacket;
 import com.zeitheron.hammercore.utils.WorldLocation;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
-import org.dimdev.jeid.api.BiomeApi;
+import org.tff.reid.api.BiomeApi;
 import org.dimdev.jeid.network.MessageManager;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;

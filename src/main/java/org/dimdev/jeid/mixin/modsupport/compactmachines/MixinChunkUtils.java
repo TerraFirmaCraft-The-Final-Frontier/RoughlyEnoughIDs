@@ -11,7 +11,7 @@ import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraftforge.common.util.Constants;
 import org.dave.compactmachines3.utility.ChunkUtils;
 import org.dimdev.jeid.JEID;
-import org.dimdev.jeid.api.BiomeApi;
+import org.tff.reid.api.BiomeApi;
 import org.dimdev.jeid.ducks.INewBlockStateContainer;
 import org.dimdev.jeid.impl.BiomeApiImpl;
 import org.spongepowered.asm.mixin.Mixin;

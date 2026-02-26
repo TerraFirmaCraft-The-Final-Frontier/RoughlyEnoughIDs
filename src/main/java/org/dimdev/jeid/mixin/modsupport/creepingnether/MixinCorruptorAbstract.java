@@ -7,7 +7,7 @@ import net.minecraft.world.chunk.Chunk;
 
 import com.cutievirus.creepingnether.entity.CorruptorAbstract;
 import com.llamalad7.mixinextras.sugar.Local;
-import org.dimdev.jeid.api.BiomeApi;
+import org.tff.reid.api.BiomeApi;
 import org.dimdev.jeid.network.MessageManager;
 import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;

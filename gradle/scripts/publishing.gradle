@@ -48,8 +48,8 @@ if (propertyBool('publish_to_github')) {
         publications {
             mavenJava(MavenPublication) {
                 from components.java // Publish with standard artifacts
-                setGroupId(propertyString('root_package'))// Publish with root package as maven group
-                setArtifactId(propertyString('mod_id')) // Publish artifacts with mod id as the artifact id
+                setGroupId(propertyString('publication_package'))// Publish with root package as maven group
+                setArtifactId(propertyString('publication_id')) // Publish artifacts with mod id as the artifact id
             }
         }
     }
