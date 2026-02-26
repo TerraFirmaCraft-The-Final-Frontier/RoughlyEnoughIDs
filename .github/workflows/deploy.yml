@@ -44,6 +44,16 @@ jobs:
             -P${{ steps.properties.outputs.maven_name }}Username=${{ secrets.MAVEN_USER }}
             -P${{ steps.properties.outputs.maven_name }}Password=${{ secrets.MAVEN_PASS }}
 
+      - name: Publish to Github Packages
+        if: steps.properties.outputs.publish_to_github == 'true'
+        uses: gradle/gradle-build-action@v2
+        env:
+          GITHUB_ACTOR: ${{ github.actor }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          arguments: |
+            publish
+
       - name: Publish to CurseForge
         if: steps.properties.outputs.publish_to_curseforge == 'true'
         uses: gradle/gradle-build-action@v2

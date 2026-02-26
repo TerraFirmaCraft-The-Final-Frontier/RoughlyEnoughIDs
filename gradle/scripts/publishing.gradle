@@ -1,6 +1,7 @@
 apply from: 'gradle/scripts/helpers.gradle'
 
 setDefaultProperty('publish_to_maven', true, false)
+setDefaultProperty('publish_to_github', true, false)
 setDefaultProperty('publish_to_curseforge', true, false)
 setDefaultProperty('publish_to_modrinth', true, false)
 
@@ -27,6 +28,21 @@ if (propertyBool('publish_to_maven')) {
                 // Remove the 'from components.java' line above
                 // Add this line (change the task name):
                 // artifacts task_name
+            }
+        }
+    }
+}
+
+if (propertyBool('publish_to_github')) {
+    publishing {
+        repositories {
+            maven {
+                name "GithubPackages"
+                url "https://maven.pkg.github.com/jchung01/" + propertyString('mod_name')
+                credentials {
+                    username = System.getenv("GITHUB_ACTOR")
+                    password = System.getenv("GITHUB_TOKEN")
+                }
             }
         }
     }
