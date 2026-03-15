@@ -68,6 +68,8 @@ if (propertyBool('publish_to_curseforge')) {
         project {
             id = propertyString('curseforge_project_id')
             addGameVersion 'Java 8'
+            addGameVersion 'Java 21'
+            addGameVersion 'Java 25'
             addGameVersion 'Forge'
             addGameVersion '1.12.2'
             releaseType = propertyString('release_type')
