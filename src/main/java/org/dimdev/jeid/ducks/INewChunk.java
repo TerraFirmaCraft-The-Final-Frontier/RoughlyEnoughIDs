@@ -1,7 +1,7 @@
 package org.dimdev.jeid.ducks;
 
-import org.tff.reid.api.BiomeApi;
-import org.tff.reid.api.biome.BiomeAccessor;
+import tff.reid.api.BiomeApi;
+import tff.reid.api.biome.BiomeAccessor;
 import org.dimdev.jeid.impl.type.BiomeStorage;
 
 /**

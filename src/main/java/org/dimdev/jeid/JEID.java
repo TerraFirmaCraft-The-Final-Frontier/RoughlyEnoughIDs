@@ -9,7 +9,7 @@ import org.dimdev.jeid.debug.RegistryDebug;
 import org.dimdev.jeid.init.REIDBiomes;
 import org.dimdev.jeid.network.MessageManager;
 import org.dimdev.jeid.proxy.IProxy;
-import org.tff.reid.Tags;
+import tff.reid.Tags;
 
 @Mod(modid = JEID.MODID,
      name = JEID.NAME,

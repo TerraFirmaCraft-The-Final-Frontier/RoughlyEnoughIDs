@@ -1,4 +1,4 @@
-package org.tff.reid.api.biome;
+package tff.reid.api.biome;
 
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.chunk.Chunk;

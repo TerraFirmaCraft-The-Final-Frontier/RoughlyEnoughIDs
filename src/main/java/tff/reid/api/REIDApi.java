@@ -1,8 +1,8 @@
-package org.tff.reid.api;
+package tff.reid.api;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.tff.reid.Tags;
+import tff.reid.Tags;
 import org.jetbrains.annotations.ApiStatus;
 
 import java.util.Iterator;

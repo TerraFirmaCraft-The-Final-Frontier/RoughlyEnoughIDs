@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.StringJoiner;
 
 import org.dimdev.jeid.util.Mods;
-import org.tff.reid.Tags;
+import tff.reid.Tags;
 import zone.rong.mixinbooter.ILateMixinLoader;
 
 public class JEIDMixinLoader implements ILateMixinLoader {

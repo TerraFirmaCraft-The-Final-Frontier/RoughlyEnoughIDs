@@ -1,6 +1,6 @@
 package org.dimdev.jeid.mixin.modsupport.thebetweenlands;
 
-import org.tff.reid.api.BiomeApi;
+import tff.reid.api.BiomeApi;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;

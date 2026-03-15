@@ -5,9 +5,9 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
 
 import com.google.common.base.Preconditions;
-import org.tff.reid.api.BiomeApi;
-import org.tff.reid.api.REIDApi;
-import org.tff.reid.api.biome.BiomeAccessor;
+import tff.reid.api.BiomeApi;
+import tff.reid.api.REIDApi;
+import tff.reid.api.biome.BiomeAccessor;
 import org.dimdev.jeid.impl.type.BiomeContainer;
 import org.dimdev.jeid.impl.type.BiomeStorage;
 
