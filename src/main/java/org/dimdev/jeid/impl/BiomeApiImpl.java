@@ -49,7 +49,7 @@ public class BiomeApiImpl implements BiomeApi {
     public void replaceBiomes(Chunk chunk, int[] biomeIds) {
         BiomeContainer biomeContainer = getBiomeContainer(chunk);
         Preconditions.checkArgument(biomeIds.length == biomeContainer.size(),
-                "Failed to replace biomes for chunk ({}, {}), Expected array length: {}, Actual: {}",
+                "Failed to replace biomes for chunk (%s, %s), Expected array length: %s, Actual: %s",
                 chunk.x, chunk.z, biomeContainer.size(), biomeIds.length);
 
         biomeContainer.setBiomes(biomeIds);
@@ -60,7 +60,7 @@ public class BiomeApiImpl implements BiomeApi {
     public void replaceBiomes(Chunk chunk, Biome[] biomes) {
         BiomeContainer biomeContainer = getBiomeContainer(chunk);
         Preconditions.checkArgument(biomes.length == biomeContainer.size(),
-                "Failed to replace biomes for chunk ({}, {}), Expected array length: {}, Actual: {}",
+                "Failed to replace biomes for chunk (%s, %s), Expected array length: %s, Actual: %s",
                 chunk.x, chunk.z, biomeContainer.size(), biomes.length);
 
         int[] biomeIds = new int[biomeContainer.size()];
