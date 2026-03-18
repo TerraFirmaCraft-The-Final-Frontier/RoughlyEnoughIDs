@@ -42,8 +42,17 @@ tasks.register('apiJar', Jar) {
     }
 }
 
+tasks.named('javadoc', Javadoc) {
+    options.addStringOption('Xdoclint:none', '-quiet')
+    options.encoding = 'UTF-8'
+    options.charSet = 'UTF-8'
+
+    include "${modGroupPath}/${apiPackagePath}/**"
+}
+
 tasks.build {
     dependsOn(tasks.apiJar)
+    dependsOn(tasks.javadoc)
 }
 
 def getFile(String relativePath) {

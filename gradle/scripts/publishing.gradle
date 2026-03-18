@@ -73,11 +73,7 @@ if (propertyBool('publish_to_curseforge')) {
             addGameVersion 'Forge'
             addGameVersion '1.12.2'
             releaseType = propertyString('release_type')
-            if (propertyBool('publish_with_changelog')) {
-                changelog = parserChangelog()
-                changelogType = 'markdown'
-            }
-            mainArtifact tasks.reobfJar, {
+            mainArtifact tasks.reobfJar.archiveFile, {
                 displayName = "${propertyString('mod_name')} ${propertyString('mod_version')}"
                 if (propertyBool('use_mixins')) {
                     relations {
@@ -89,7 +85,14 @@ if (propertyBool('publish_to_curseforge')) {
                         requiredDependency 'assetmover'
                     }
                 }
+                if (propertyBool('publish_with_changelog')) {
+                    changelog = parserChangelog()
+                    changelogType = 'markdown'
+                }
             }
+            addArtifact tasks.javadocJar.archiveFile
+            addArtifact tasks.sourcesJar.archiveFile
+            addArtifact tasks.apiJar.archiveFile
             options {
                 debug = propertyBool('curseforge_debug')
             }
@@ -108,7 +111,8 @@ if (propertyBool('publish_to_modrinth')) {
         projectId = propertyString('modrinth_project_id')
         versionNumber = propertyString('mod_version')
         versionType = propertyString('release_type')
-        uploadFile = tasks.reobfJar
+        uploadFile = tasks.reobfJar.archiveFile
+        additionalFiles = [tasks.javadocJar.archiveFile, tasks.sourcesJar.archiveFile, tasks.apiJar.archiveFile]
         gameVersions = ['1.12.2']
         loaders = ['forge']
         debugMode = propertyBool('modrinth_debug')
