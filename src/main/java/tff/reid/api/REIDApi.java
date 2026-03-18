@@ -8,20 +8,25 @@ import org.jetbrains.annotations.ApiStatus;
 import java.util.Iterator;
 import java.util.ServiceLoader;
 
+/**
+ * Holds API constants for REID.
+ * <br>
+ * Use the {@code API_ID} {@value API_ID} (as a literal) to check if the API is loaded. Take care not to reference any
+ * of these constants before checking the API is loaded, as it may not exist at runtime.
+ * Recommended to cache this check. As an example:
+ * <pre>
+ * {@code
+ * boolean reidApiLoaded = ModAPIManager.INSTANCE.hasAPI("RoughlyEnoughIds|API");
+ * }
+ * </pre>
+ * This is the preferred way to check for the API over {@link net.minecraftforge.fml.common.Loader#isModLoaded(String)}
+ * because REID shares the same mod id as JEID. Alternatively, you could explicitly check for the mod name and first
+ * version that REID started providing its API (2.3.0).
+ */
 public final class REIDApi {
     public static final String MOD_ID = Tags.MOD_ID;
     public static final String MOD_NAME = Tags.MOD_NAME;
     public static final String MOD_VERSION = Tags.VERSION;
-    /**
-     * The id of the provided API. Use this name to check if the API is loaded. Recommended to cache the check. For example:
-     * <pre>
-     * {@code
-     * public static boolean reidApiLoaded = ModAPIManager.INSTANCE.hasAPI(REIDApi.API_NAME);
-     * }
-     * </pre>
-     * You should use this way to check for the API over {@link net.minecraftforge.fml.common.Loader#isModLoaded(String)}
-     * because REID shares the same mod id as JEID.
-     */
     public static final String API_ID = Tags.API_NAME;
     public static final String API_VERSION = Tags.API_VERSION;
 
