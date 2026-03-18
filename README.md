@@ -55,9 +55,9 @@ necessary if you are testing your mod in dev with REID.
 Since v2.3.0, this mod provides an API to allow mod authors to add REID compatibility. Generally, most mods will already
 be supported out of the box - this API is for certain elements of mods that require explicit support, either from REID's
 side through mixins, or from the mod's side. The API currently provides:
-- [`BiomeApi`](/src/main/java/org/dimdev/jeid/api/BiomeApi.java): Reading/writing biome ids in REID format. Any mod with
+- [`BiomeApi`](/src/main/java/tff/reid/api/BiomeApi.java): Reading/writing biome ids in REID format. Any mod with
 mechanics that manually change biomes in a chunk should use this.
-- Various classes for compatibility: see [`api/compat`](/src/main/java/org/dimdev/jeid/api/compat) package.
+- Various classes for compatibility: see [`api/compat`](/src/main/java/tff/reid/api/compat) package.
 
 See the javadocs for each api service for more details.
 
