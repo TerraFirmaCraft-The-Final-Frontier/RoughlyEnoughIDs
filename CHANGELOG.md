@@ -21,3 +21,13 @@ casting `(INewChunk) chunk`; mod-makers should use the `BiomeAPI` instead.
 - Update compatibility for Wyrms of Nyrus 0.8+.
 - Handle CubicChunks 3D biomes correctly - worlds with 3D biomes should report their biomes correctly now depending on 
 the y-level.
+
+## [2.2.4] - 2026-02-03
+
+### Changed
+- Migrated some Advanced Rocketry mixin(s) to ASM instead to inject across different versions of the mod more flexibly.
+- Slightly improved chunk saving performance.
+
+### Fixed
+- Update compatibility for Advanced Rocketry - Reworked 2.1.5.
+- Fix masking of `GenLayerRiverMix` for extended IDs. This should have no practical change.
