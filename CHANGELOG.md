@@ -1,6 +1,6 @@
 # Changelog
 
-## [2.3.0] - 2026-02-25
+## [2.3.0] - 2026-03-21
 
 ### Added
 - An API jar for other mods to depend on. Currently, this is mainly just `BiomeApi`, which is used to read/write biomes
@@ -17,6 +17,7 @@ future.
 casting `(INewChunk) chunk`; mod-makers should use the `BiomeAPI` instead.
 
 ### Fixed
+- Use REID format for WorldEdit's `BaseBlock#hashCode()`. Possibly fixes issues with blocks copied by WorldEdit.
 - Update compatibility for Scape and Run: Parasites 1.10.x; version 1.9.x is still supported until 1.10.x becomes stable.
 - Update compatibility for Wyrms of Nyrus 0.8+.
 - Handle CubicChunks 3D biomes correctly - worlds with 3D biomes should report their biomes correctly now depending on 
