@@ -1,4 +1,4 @@
-package org.dimdev.jeid.api.compat;
+package tff.reid.api.compat;
 
 import net.minecraft.world.gen.IChunkGenerator;
 

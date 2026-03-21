@@ -1,6 +1,7 @@
 apply from: 'gradle/scripts/helpers.gradle'
 
 setDefaultProperty('publish_to_maven', true, false)
+setDefaultProperty('publish_to_github', true, false)
 setDefaultProperty('publish_to_curseforge', true, false)
 setDefaultProperty('publish_to_modrinth', true, false)
 
@@ -32,38 +33,108 @@ if (propertyBool('publish_to_maven')) {
     }
 }
 
+if (propertyBool('publish_to_github')) {
+    publishing {
+        repositories {
+            maven {
+                name "GithubPackages"
+                url "https://maven.pkg.github.com/TerraFirmaCraft-The-Final-Frontier/" + propertyString('mod_name')
+                credentials {
+                    username = System.getenv("GITHUB_ACTOR")
+                    password = System.getenv("GITHUB_TOKEN")
+                }
+            }
+        }
+        publications {
+            mavenJava(MavenPublication) {
+                from components.java // Publish with standard artifacts
+                artifact tasks.named('apiJar')
+                setGroupId(propertyString('publication_package'))// Publish with root package as maven group
+                setArtifactId(propertyString('publication_id')) // Publish artifacts with mod id as the artifact id
+            }
+        }
+    }
+}
+
 // Documentation here: https://github.com/matthewprenger/CurseGradle/wiki/
 if (propertyBool('publish_to_curseforge')) {
     apply plugin: 'com.matthewprenger.cursegradle'
     assertProperty('curseforge_project_id')
     assertProperty('release_type')
     setDefaultProperty('curseforge_debug', false, false)
+
+    final def required_mods = []
+    if (propertyBool('use_mixins')) {
+        required_mods << 'mixin-booter'
+    }
+    if (propertyBool('use_asset_mover')) {
+        required_mods << 'assetmover'
+    }
+    final def supported_mods = [
+            'abyssalcraft',
+            'advanced-rocketry',
+            'advanced-rocketry-2',
+            'atum',
+            'bewitchment-legacy',
+            'biomes-o-plenty',
+            'biome-staff',
+            'biometweaker',
+            'bookshelf',
+            'chunkpregenerator',
+            'compact-machines',
+            'opencubicchunks',
+            'cyclops-core',
+            'extra-utilities',
+            'gaia-dimension',
+            'climate-control-geographicraft',
+            'hammer-lib',
+            'journeymap',
+            'beta-kathairis',
+            'more-planets-gc-addon',
+            'mystcraft',
+            'natures-compass',
+            'realistic-terrain-generation-unofficial',
+            'scape-and-run-parasites',
+            'thaumcraft',
+            'angry-pixel-the-betweenlands-mod',
+            'tofucraftreload',
+            'tropicraft',
+            'the-twilight-forest',
+            'worldedit',
+            'wyrms-of-nyrus'
+    ]
+
     curseforge {
         apiKey = System.getenv('CURSEFORGE_TOKEN') == null ? "" : System.getenv('CURSEFORGE_TOKEN')
         // noinspection GroovyAssignabilityCheck
         project {
             id = propertyString('curseforge_project_id')
             addGameVersion 'Java 8'
+            addGameVersion 'Java 21'
+            addGameVersion 'Java 25'
             addGameVersion 'Forge'
             addGameVersion '1.12.2'
             releaseType = propertyString('release_type')
-            if (!propertyBool('publish_with_changelog')) {
-                changelog = parserChangelog()
-                changelogType = 'markdown'
-            }
-            mainArtifact tasks.reobfJar, {
+            mainArtifact tasks.reobfJar.archiveFile, {
                 displayName = "${propertyString('mod_name')} ${propertyString('mod_version')}"
-                if (propertyBool('use_mixins')) {
-                    relations {
-                        requiredDependency 'mixin-booter'
+                relations {
+                    required_mods.each {
+                        requiredDependency it
+                    }
+                    incompatible 'jeid'
+                    incompatible 'notenoughids'
+                    supported_mods.each {
+                        optionalDependency it
                     }
                 }
-                if (propertyBool('use_asset_mover')) {
-                    relations {
-                        requiredDependency 'assetmover'
-                    }
+                if (propertyBool('publish_with_changelog')) {
+                    changelog = parserChangelog()
+                    changelogType = 'markdown'
                 }
             }
+            addArtifact tasks.javadocJar.archiveFile
+            addArtifact tasks.sourcesJar.archiveFile
+            addArtifact tasks.apiJar.archiveFile
             options {
                 debug = propertyBool('curseforge_debug')
             }
@@ -77,26 +148,52 @@ if (propertyBool('publish_to_modrinth')) {
     assertProperty('modrinth_project_id')
     assertProperty('release_type')
     setDefaultProperty('modrinth_debug', false, false)
+
+    final def required_mods = []
+    if (propertyBool('use_mixins')) {
+        required_mods << 'mixinbooter'
+    }
+    if (propertyBool('use_asset_mover')) {
+        required_mods << 'assetmover'
+    }
+    final def supported_mods = [
+            'advanced-rocketry-reworked',
+            'biomes-o-plenty',
+            'bookshelf-lib',
+            'cubicchunks',
+            'geographicraft',
+            'hammer-lib',
+            'journeymap',
+            'more-planets',
+            'mystcraft',
+            'natures-compass',
+            'rtg-plus',
+            'scapeandrunparasites',
+            'tropicraft',
+            'wyrms'
+    ]
+
     modrinth {
         token = System.getenv('MODRINTH_TOKEN') ? "" : System.getenv('MODRINTH_TOKEN')
         projectId = propertyString('modrinth_project_id')
         versionNumber = propertyString('mod_version')
         versionType = propertyString('release_type')
-        uploadFile = tasks.reobfJar
+        uploadFile = tasks.reobfJar.archiveFile
+        additionalFiles = [tasks.javadocJar.archiveFile, tasks.sourcesJar.archiveFile, tasks.apiJar.archiveFile]
         gameVersions = ['1.12.2']
         loaders = ['forge']
         debugMode = propertyBool('modrinth_debug')
         if (propertyBool('use_mixins') || propertyBool('use_asset_mover')) {
             dependencies {
-                if (propertyBool('use_mixins')) {
-                    required.project 'mixinbooter'
+                required_mods.each {
+                    required.project it
                 }
-                if (propertyBool('use_asset_mover')) {
-                    required.project 'assetmover'
+                supported_mods.each {
+                    optional.project it
                 }
             }
         }
-        if (!propertyBool('publish_with_changelog')) {
+        if (propertyBool('publish_with_changelog')) {
             changelog = parserChangelog()
         }
         if (propertyBool('modrinth_sync_readme')) {

@@ -15,13 +15,49 @@ Running on:
 - RetroFuturaGradle 2.0.2
 - Forge 14.23.5.2847
 
+## Maven
+Besides the automatic artifacts available from CurseForge and Modrinth, REID is also available on GitHub Packages.  
+
+Using Github Packages [requires special setup](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-gradle-registry#authenticating-to-github-packages)
+to authenticate with your personal access token (this is a limitation of GitHub itself).  
+Here is a more explicit example:
+```groovy
+repositories {
+    exclusiveContent {
+        forRepository {
+            maven {
+                name 'RoughlyEnoughIDs GPR'
+                url 'https://maven.pkg.github.com/TerraFirmaCraft-The-Final-Frontier/RoughlyEnoughIDs'
+                credentials {
+                    username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+                    password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
+                }
+            }
+        }
+        filter {
+            includeGroup 'tff'
+        }
+    }
+}
+```
+
+When compiling against REID's API, you can declare the Gradle dependency by adding:
+```groovy
+dependencies {
+    compileOnly 'tff:reid:VERSION:api' // Compile against the API
+    runtimeOnly 'tff:reid:VERSION'     // Run with REID in dev
+}
+```
+or add the `compileOnly` to your existing `dependencies` block in your `build.gradle`. The `runtimeOnly` line is only
+necessary if you are testing your mod in dev with REID.
+
 ## API
 Since v2.3.0, this mod provides an API to allow mod authors to add REID compatibility. Generally, most mods will already
 be supported out of the box - this API is for certain elements of mods that require explicit support, either from REID's
 side through mixins, or from the mod's side. The API currently provides:
-- [`BiomeApi`](/src/main/java/org/dimdev/jeid/api/BiomeApi.java): Reading/writing biome ids in REID format. Any mod with
+- [`BiomeApi`](/src/main/java/tff/reid/api/BiomeApi.java): Reading/writing biome ids in REID format. Any mod with
 mechanics that manually change biomes in a chunk should use this.
-- Various classes for compatibility: see [`api/compat`](/src/main/java/org/dimdev/jeid/api/compat) package.
+- Various classes for compatibility: see [`api/compat`](/src/main/java/tff/reid/api/compat) package.
 
 See the javadocs for each api service for more details.
 

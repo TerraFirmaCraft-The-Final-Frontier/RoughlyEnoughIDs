@@ -8,7 +8,7 @@ assertProperty("api_package")
 
 final String javaSourceDir = 'src/main/java/'
 
-final String modGroupPath = root_package.toString().replace('.' as char, '/' as char)
+final String modGroupPath = (publication_package.toString() + '.' + publication_id.toString()).replace('.' as char, '/' as char)
 final String apiPackagePath = api_package.toString().replace('.' as char, '/' as char)
 
 String targetPackageJava = javaSourceDir + modGroupPath
@@ -42,8 +42,17 @@ tasks.register('apiJar', Jar) {
     }
 }
 
+tasks.named('javadoc', Javadoc) {
+    options.addStringOption('Xdoclint:none', '-quiet')
+    options.encoding = 'UTF-8'
+    options.charSet = 'UTF-8'
+
+    include "${modGroupPath}/${apiPackagePath}/**"
+}
+
 tasks.build {
     dependsOn(tasks.apiJar)
+    dependsOn(tasks.javadoc)
 }
 
 def getFile(String relativePath) {
