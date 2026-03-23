@@ -1,0 +1,35 @@
+name: Deploy Modrinth (manual)
+
+on: workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Grant Execute Permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Read gradle.properties
+        uses: BrycensRanch/read-properties-action@v1
+        id: properties
+        with:
+          file: gradle.properties
+          all: true
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '25'
+          distribution: 'zulu'
+          cache: gradle
+
+      - name: Publish to Modrinth
+        if: steps.properties.outputs.publish_to_modrinth == 'true'
+        uses: gradle/gradle-build-action@v2
+        env:
+          MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
+        with:
+          arguments: modrinth

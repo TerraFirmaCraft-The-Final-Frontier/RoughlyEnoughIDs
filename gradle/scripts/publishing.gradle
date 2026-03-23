@@ -116,7 +116,7 @@ if (propertyBool('publish_to_curseforge')) {
             addGameVersion '1.12.2'
             releaseType = propertyString('release_type')
             mainArtifact tasks.reobfJar.archiveFile, {
-                displayName = "${propertyString('mod_name')} ${propertyString('mod_version')}"
+                displayName = propertyString('mod_version')
                 relations {
                     required_mods.each {
                         requiredDependency it
@@ -174,12 +174,19 @@ if (propertyBool('publish_to_modrinth')) {
     ]
 
     modrinth {
-        token = System.getenv('MODRINTH_TOKEN') ? "" : System.getenv('MODRINTH_TOKEN')
+        token = System.getenv('MODRINTH_TOKEN') == null ? "" : System.getenv('MODRINTH_TOKEN')
         projectId = propertyString('modrinth_project_id')
         versionNumber = propertyString('mod_version')
         versionType = propertyString('release_type')
         uploadFile = tasks.reobfJar.archiveFile
-        additionalFiles = [tasks.javadocJar.archiveFile, tasks.sourcesJar.archiveFile, tasks.apiJar.archiveFile]
+        additionalFiles = [
+                tasks.javadocJar.archiveFile,
+                tasks.sourcesJar.archiveFile,
+        ]
+        // Modrinth doesn't support -api.jar file type
+        additionalFiles {
+            other(tasks.apiJar)
+        }
         gameVersions = ['1.12.2']
         loaders = ['forge']
         debugMode = propertyBool('modrinth_debug')
@@ -200,5 +207,9 @@ if (propertyBool('publish_to_modrinth')) {
             syncBodyFrom = file('README.md').text
             tasks.modrinth.dependsOn(tasks.modrinthSyncBody)
         }
+    }
+
+    tasks.modrinth {
+        dependsOn(tasks.apiJar)
     }
 }
