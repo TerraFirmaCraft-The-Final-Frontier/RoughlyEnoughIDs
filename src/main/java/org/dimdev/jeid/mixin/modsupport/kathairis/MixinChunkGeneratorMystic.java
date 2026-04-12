@@ -14,9 +14,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(value = ChunkGeneratorMystic.class, remap = false)
 public class MixinChunkGeneratorMystic implements CompatibleChunkGenerator {
+    /* The modified biomes after querying the biome provider */
     @Shadow
     private Biome[] biomesForGeneration;
 
+    /*
+     * Explicit compatibility with REID's biome format.
+     * The chunk generator modifies the biomes returned by the world's biome provider.
+     */
     @Inject(method = "generateChunk", at = @At(value = "RETURN"), remap = true)
     private void reid$initBiomes(CallbackInfoReturnable<Chunk> cir) {
         BiomeApi.INSTANCE.replaceBiomes(cir.getReturnValue(), biomesForGeneration);

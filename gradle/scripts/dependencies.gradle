@@ -100,6 +100,7 @@ dependencies {
     compileOnly rfg.deobf("curse.maven:naturescompass-252848:2893527")
     compileOnly rfg.deobf("curse.maven:biomestaff-299907:2597577")
     compileOnly rfg.deobf("curse.maven:kathairis-291129:2710928")
+    compileOnly rfg.deobf("curse.maven:warpdrive-233565:3762066")
 
     compileOnly rfg.deobf("curse.maven:cubicchunks-292243:5135427")
     // RTG+ should also work

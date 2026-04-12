@@ -1,9 +1,6 @@
 package org.dimdev.jeid.util;
 
-import net.minecraft.util.ResourceLocation;
-
 import net.minecraftforge.fml.common.Loader;
-import org.dimdev.jeid.JEID;
 
 public enum Mods {
     ADVANCED_ROCKETRY("advancedrocketry"),
@@ -34,16 +31,15 @@ public enum Mods {
     TOFUCRAFT("tofucraft"),
     TROPICRAFT("tropicraft"),
     TWILIGHT_FOREST("twilightforest"),
+    WARP_DRIVE("warpdrive"),
     WORLD_EDIT("worldedit"),
     WYRMS_OF_NYRUS("wyrmsofnyrus"),
     ;
 
     public final String modId;
-    private final ResourceLocation registryKey;
 
     Mods(String modId) {
         this.modId = modId;
-        registryKey = new ResourceLocation(JEID.MODID, modId);
     }
 
     public boolean isLoaded() {

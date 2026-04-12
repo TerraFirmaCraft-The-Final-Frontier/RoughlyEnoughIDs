@@ -1,0 +1,10 @@
+{
+  "package": "org.dimdev.jeid.mixin.modsupport.warpdrive",
+  "required": true,
+  "refmap": "mixins.jeid.refmap.json",
+  "minVersion": "0.8",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "MixinSpaceWorldProvider"
+  ]
+}

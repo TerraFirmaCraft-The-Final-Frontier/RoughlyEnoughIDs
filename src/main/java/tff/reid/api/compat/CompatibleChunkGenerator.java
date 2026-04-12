@@ -3,9 +3,9 @@ package tff.reid.api.compat;
 import net.minecraft.world.gen.IChunkGenerator;
 
 /**
- * Implement this if your mod has a {@link IChunkGenerator} that already provides compatibility with REID's biome format
+ * Implement this if your mod has an {@link IChunkGenerator} that provides custom compatibility with REID's biome format
  * in {@link IChunkGenerator#generateChunk(int, int)}.
- * Not strictly necessary, but will reduce chunk generation overhead from REID.
+ * This is required, otherwise REID will overwrite your changes with its default implementation.
  */
 public interface CompatibleChunkGenerator {
 }
