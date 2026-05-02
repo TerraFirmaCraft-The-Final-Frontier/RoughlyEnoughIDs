@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.1] - 2026-05-02
+### Added
+- Biome compatibility for WarpDrive.
+
+### Changed
+- Further improved chunk saving performance.
+
 ## [2.3.0] - 2026-03-21
 
 ### Added
